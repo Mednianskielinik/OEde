@@ -31,7 +31,7 @@ $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($lin
 $row = mysqli_fetch_row($result);
 if (!empty($row[0]))
 {
-    echo "<p><a href=\"reg.html\" target=\"CONTENT\">НАЗАД</a></p>";
+    echo "<p><a href=\"index.php\" target=\"CONTENT\">НАЗАД</a></p>";
     mysqli_close($link);
     exit ("Извините, введённый вами логин уже зарегистрирован. Введите другой логин.");
 }
@@ -52,7 +52,7 @@ if ($result2=='TRUE')
     echo "Вы успешно зарегистрированы! Теперь вы можете зайти на сайт. <a href='index.php' target=\"CONTENT\">Главная страница</a>";
 }
 else {
-    echo "<p><a href=\"reg.html\" target=\"CONTENT\">НАЗАД</a></p>";
+    echo "<p><a href=\"index.php\" target=\"CONTENT\">НАЗАД</a></p>";
     mysqli_close($link);
     exit ("Ошибка! Вы не зарегистрированы.");
 }

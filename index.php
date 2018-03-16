@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>Soups</title>
-    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css"><!--First comment of Venera-->
 </head>
 <body>
 <?php
@@ -26,10 +26,13 @@ if (session_id()=='')
 include_once("template_header.html");
 ?>
 
-    <?php
-    include_once("text-home.html");
-    ?>
-
+<div class="flex-container">
+    <div>
+        <?php
+        include("text-home.html");
+        ?>
+    </div>
+</div>
 <?php
 include_once("template_footer.html");
 ?>
