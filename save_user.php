@@ -49,7 +49,7 @@ mysqli_close($link);
 // Проверяем, есть ли ошибки
 if ($result2=='TRUE')
 {
-    echo "Вы успешно зарегистрированы! Теперь вы можете зайти на сайт. <a href='text-home.html' target=\"CONTENT\">Главная страница</a>";
+    echo "Вы успешно зарегистрированы! Теперь вы можете зайти на сайт. <a href='index.php' target=\"CONTENT\">Главная страница</a>";
 }
 else {
     echo "<p><a href=\"reg.html\" target=\"CONTENT\">НАЗАД</a></p>";
