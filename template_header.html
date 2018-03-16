@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style/all.css">
+    <link rel="stylesheet" type="text/css" href="style/menu.css">
+    <title>УМК</title>
+    <style>
+        #blockscreen, #modalwindow {
+            position: fixed;
+        }
+        #blockscreen {
+            background: rgba(0, 0, 0, .5);
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+        #modalwindow {
+            z-index: 11;
+            background-color: rgba(168, 28, 27, 0.9);
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid rgba(12, 12, 12, 0.15);;
+            box-shadow: 0 0 10px #444;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var modalWindow = {
+        _block: null,
+        _win: null,
+        initBlock: function() {
+            _block = document.getElementById('blockscreen'); //Получаем наш блокирующий фон по ID
+
+            //Если он не определен, то создадим его
+            if (!_block) {
+                var parent = document.getElementsByTagName('body')[0]; //Получим первый элемент тега body
+                var obj = parent.firstChild; //Для того, чтобы вставить наш блокирующий фон в самое начало тега body
+                _block = document.createElement('div'); //Создаем элемент div
+                _block.id = 'blockscreen'; //Присваиваем ему наш ID
+                parent.insertBefore(_block, obj); //Вставляем в начало
+                _block.onclick = function() { modalWindow.close(); } //Добавим обработчик события по нажатию на блокирующий экран - закрыть модальное окно.
+            }
+            _block.style.display = 'inline'; //Установим CSS-свойство
+        },
+        initWin: function(width,i) {
+            _win = document.getElementById('modalwindow'); //Получаем наше диалоговое окно по ID
+            //Если оно не определено, то также создадим его по аналогии
+            if (!_win) {
+                var parent = document.getElementsByTagName('body')[0];
+                var obj = parent.firstChild;
+                _win = document.createElement('div');
+                _win.id = 'modalwindow';
+                _win.style.padding = '0 0 5px 0';
+                parent.insertBefore(_win, obj);
+            }
+            _win.style.width = width + 'px'; //Установим ширину окна
+            _win.style.display = 'inline'; //Зададим CSS-свойство
+            var inner1="<div class=\"reg\" id=\"registration\">\n" +
+                "<form action=\"auth_in.php\" method=\"post\">\n" +
+                "    <!--**** auth_in.php - это адрес обработчика.  ***** -->\n" +
+                "    <p>\n" +
+                "        <label>Ваш логин:<br></label>\n" +
+                "        <input name=\"login\" type=\"text\" size=\"15\" maxlength=\"15\">\n" +
+                "    </p>\n" +
+                "    <!--**** В текстовое поле (name=\"login\" type=\"text\") пользователь вводит свой логин ***** -->\n" +
+                "    <p>\n" +
+                "        <label>Ваш пароль:<br></label>\n" +
+                "        <input name=\"password\" type=\"password\" size=\"15\" maxlength=\"15\">\n" +
+                "    </p>\n" +
+                "    <!--**** В поле для паролей (name=\"password\" type=\"password\") пользователь вводит свой пароль ***** -->\n" +
+                "    <p>\n" +
+                "        <input type=\"submit\" name=\"submit\" value=\"Войти\">\n" +
+                "        <!--**** Кнопочка (type=\"submit\") отправляет данные на страничку auth_in.php ***** -->\n" +
+                "    </p></form>\n" +
+                "</div>";
+            var inner2="<p><center>\n" +
+                "\n" +
+                "    <h2>Регистрация</h2>\n" +
+                "    <form action=\"save_user.php\" method=\"post\">\n" +
+                "<p>\n" +
+                "    <label>Ваш логин:<br></label>\n" +
+                "    <input name=\"login\" type=\"text\" size=\"15\" maxlength=\"15\">\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "    <label>Ваш пароль:<br></label>\n" +
+                "    <input name=\"password\" type=\"password\" size=\"15\" maxlength=\"15\">\n" +
+                "</p>\n" +
+                "\n" +
+                "<p>\n" +
+                "    <label>Фамилия:<br></label>\n" +
+                "    <input name=\"surname\" type=\"text\" size=\"15\" maxlength=\"15\">\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "    <label>Имя:<br></label>\n" +
+                "    <input name=\"first_name\" type=\"text\" size=\"15\" maxlength=\"15\">\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "    <label>e-mail:<br></label>\n" +
+                "    <input name=\"e_mail\" type=\"text\" size=\"15\" maxlength=\"15\">\n" +
+                "</p>\n" +
+                "\n" +
+                "\n" +
+                "<p>\n" +
+                "    <input type=\"submit\" name=\"submit\" value=\"Зарегистрироваться\">\n" +
+                "</p></form>\n" +
+                "</center></p>";
+            if(i==1) {
+                _win.innerHTML = inner1; //Добавим нужный HTML-текст в наше диалоговое окно
+            }
+            else if(i==2) {
+                _win.innerHTML = inner2; //Добавим нужный HTML-текст в наше диалоговое окно
+            }
+            //Установим позицию по центру экрана
+
+            _win.style.left = '50%'; //Позиция по горизонтали
+            _win.style.top = '50%'; //Позиция по вертикали
+
+            //Выравнивание по центру путем задания отрицательных отступов
+            _win.style.marginTop = -(_win.offsetHeight / 2) + 'px';
+            _win.style.marginLeft = -(width / 2) + 'px';
+        },
+        close: function() {
+            document.getElementById('blockscreen').style.display = 'none';
+            document.getElementByIdt('modalwindow').style.display = 'none';
+        },show: function(width,i) {
+            modalWindow.initBlock();
+            modalWindow.initWin(width,i);
+        }
+    }
+
+
+</script>
+<div class="h">
+    <div class="flex-container">
+        <div class="user">
+
+        </div>
+        <div>
+            <img src = "logo.jpg" width="100" height="80">
+        </div>
+        <div>
+            <?php
+            if (session_id()=='');
+            if ($_SESSION['login']=="")
+            {
+            echo "<center><div onclick='modalWindow.show(500,1)'>Войти</div>&emsp;<div onclick='modalWindow.show(500,2)'>Регистрация</div></center>";
+            }
+            else
+            {
+            echo "<center><a href='auth_out.php' target=\"REG-AUTH\">Выйти</a>&emsp;<a href='reg.html' target=\"CONTENT\">Регистрация</a></center>";
+            }
+            ?>
+
+        </div>
+    </div>
+    <div class="v"><?php
+   include "menu.html";
+   ?>
+    </div>
+    <div>
+
+
+    </div>
+</div>
+
+
+</body>

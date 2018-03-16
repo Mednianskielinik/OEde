@@ -1,0 +1,59 @@
+       .flex-container1 {
+            width: 100%;
+            height: 80%;
+            box-shadow: 0 0 20px #6c6269;
+            color: rgba(125, 125, 125, 0.75);
+            margin-left: 2%;
+            background-color: #ffffff;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: nowrap;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            -webkit-align-content: center;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+
+        .m{
+            background-color: #eeead4;
+            width: 15%;
+            height: 100%;
+            text-align: center;
+            line-height: 2em;
+        }
+       .n{
+           width: 15%;
+           height: 95%;
+           border-bottom: solid 3px rgba(61, 61, 61, 0.82);
+           text-align: center;
+           line-height: 2em;
+       }
+       .mm{
+           margin-top: 0;
+           margin-bottom: 0;
+           width: 100%;
+           height: 7%;
+           background-color: rgba(215, 215, 215, 0.43);
+           text-align: center;
+           line-height: 2.5em;
+       }
+       .nn{
+
+           margin-top: 0;
+           margin-bottom: 0;
+           width: 96%;
+           height: 7%;
+           text-align: center;
+           line-height: 2.5em;
+       }

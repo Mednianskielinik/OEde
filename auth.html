@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Авторизация</title>
+</head>
+<body>
+
+<form action="auth_in.php" method="post">
+    <!--**** auth_in.php - это адрес обработчика.  ***** -->
+    <p>
+        <label>Ваш логин:<br></label>
+        <input name="login" type="text" size="15" maxlength="15">
+    </p>
+    <!--**** В текстовое поле (name="login" type="text") пользователь вводит свой логин ***** -->
+    <p>
+        <label>Ваш пароль:<br></label>
+        <input name="password" type="password" size="15" maxlength="15">
+    </p>
+    <!--**** В поле для паролей (name="password" type="password") пользователь вводит свой пароль ***** -->
+    <p>
+        <input type="submit" name="submit" value="Войти">
+        <!--**** Кнопочка (type="submit") отправляет данные на страничку auth_in.php ***** -->
+    </p></form>
+</body>
+</html>

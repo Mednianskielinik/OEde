@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style/menu.css">
+    <link rel="stylesheet" type="text/css" href="style/all.css">
+</head>
+<body>
+<br>
+<div class="flex-container1">
+<?php
+if ($master == "Home")
+{
+echo "<div class = 'n'>Home</div>";
+}
+else
+{
+echo "<div class = 'm'>
+      <a href='index.php'>Home</a>
+     </div>";
+}
+?>
+
+<?php
+if ($master == "Soups")
+{
+echo "<div class = 'n'>Soups</div>";
+}
+else
+{
+echo "<div class = 'm'>
+      <a href='1.php'>Soups</a>
+      </div>";
+}
+?>
+
+<?php
+if ($master == "Dessert")
+{
+echo "<div class = 'n'>Dessert</div>";
+}
+else
+{
+echo "<div class = 'm'>
+      <a href='2.php'>Dessert</a>
+      </div>";
+}
+?>
+
+<?php
+if ($master == "Porridges")
+{
+echo "<div class = 'n'>Porridges</div>";
+}
+else
+{
+echo "<div class = 'm'>
+     <a href='3.php'>Porridges</a>
+     </div>";
+}
+?>
+</div>
+</body>
+</html>
