@@ -75,6 +75,8 @@
                 "    <!--**** В поле для паролей (name=\"password\" type=\"password\") пользователь вводит свой пароль ***** -->\n" +
                 "    <p>\n" +
                 "        <input type=\"submit\" name=\"submit\" value=\"Войти\">\n" +
+                "    <p>\n" +
+                "        <div onclick='modalWindow.close()'>Отмена</div>\n" +
                 "        <!--**** Кнопочка (type=\"submit\") отправляет данные на страничку auth_in.php ***** -->\n" +
                 "    </p></form>\n" +
                 "</div>";
@@ -107,6 +109,8 @@
                 "\n" +
                 "<p>\n" +
                 "    <input type=\"submit\" name=\"submit\" value=\"Зарегистрироваться\">\n" +
+                "    <p>\n" +
+                "        <div onclick='modalWindow.close()'>Отмена</div>\n" +
                 "</p></form>\n" +
                 "</center></p>";
             if(i==1) {
@@ -125,8 +129,10 @@
             _win.style.marginLeft = -(width / 2) + 'px';
         },
         close: function() {
-            document.getElementById('blockscreen').style.display = 'none';
-            document.getElementByIdt('modalwindow').style.display = 'none';
+
+            document.querySelector("#blockscreen").style.display='none';
+            document.querySelector("#modalwindow").style.display='none';
+
         },show: function(width,i) {
             modalWindow.initBlock();
             modalWindow.initWin(width,i);

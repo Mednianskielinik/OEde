@@ -14,7 +14,7 @@ else
 ?>
 <?php
 $master ="Soups";
-$menu_second="Soup 1";
+$menu_second=++$_GET['id'];
 
 if (session_id()=='');
 session_start();
@@ -30,8 +30,41 @@ include_once("template_header.html");
         ?>
     </div>
     <div class="flex-item">
+        <?php
+        $host = "localhost"; // адрес сервера
+        $database = "oede"; // имя базы данных
+        $user = "root"; // имя пользователя
+        $password = ""; // пароль
+        $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
+
+        // изменение набора символов на cp1251
+        if (!mysqli_set_charset($link, "cp1251")) {
+            echo "Ошибка при загрузке набора символов cp1251";
+            mysqli_error($link);
+            exit();
+        }
+?>
     <?php
-    include_once("soup1.html");
+    $query ="SELECT ingrid, recipi FROM soups WHERE idsoup='$menu_second'";
+    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+    if($result)
+    {
+        $rows = mysqli_num_rows($result); // количество полученных строк
+        for ($i = 0 ; $i < $rows ; ++$i)
+        {
+            $row = mysqli_fetch_row($result);
+            echo "<p>";
+            echo "<strong>";
+            echo "Тема лекции \"";
+            echo $row[0];
+            echo "\"";
+            echo "</strong>";
+            echo "</p>";
+            echo "<br>";
+            echo $row[1];
+        }
+    }
+
     ?>
 </div>
 </div>
