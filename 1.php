@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>Soups</title>
-    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="../php/style/main.css">
 </head>
 <body>
 <?php
@@ -21,10 +21,11 @@ session_start();
 <?php
 include_once("template_header.html");
 ?>
+
 <div class="flex-container">
     <div class="flex-item">
         <?php
-        include("menu_second.html");
+        include("menu_second.php");
         ?>
     </div>
     <div class="flex-item">
@@ -44,6 +45,8 @@ include_once("template_header.html");
         ?>
         <?php
         $query ="SELECT ingrid, recipi FROM soups WHERE idsoup='$menu_second'";
+        $_SESSION['idpost'] = $menu_second;
+        $_SESSION['type'] = $master;
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
         if($result)
         {
@@ -53,9 +56,8 @@ include_once("template_header.html");
                 $row = mysqli_fetch_row($result);
                 echo "<p>";
                 echo "<strong>";
-                echo "Тема лекции \"";
+                echo "Для приготовления вам понадобятся: ";
                 echo $row[0];
-                echo "\"";
                 echo "</strong>";
                 echo "</p>";
                 echo "<br>";
@@ -64,10 +66,11 @@ include_once("template_header.html");
         }
 
         ?>
+        <div id="coment">
         <?php
-        include ("coments.html");
+        include ("coments.html")
         ?>
-
+        </div>
     </div>
 </div>
 

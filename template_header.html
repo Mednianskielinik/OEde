@@ -5,30 +5,11 @@
     <link rel="stylesheet" type="text/css" href="style/all.css">
     <link rel="stylesheet" type="text/css" href="style/menu.css">
     <title>УМК</title>
-    <style>
-        #blockscreen, #modalwindow {
-            position: fixed;
-        }
-        #blockscreen {
-            background: rgba(0, 0, 0, .5);
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: 10;
-        }
-        #modalwindow {
-            z-index: 11;
-            background-color: rgba(168, 28, 27, 0.9);
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid rgba(12, 12, 12, 0.15);;
-            box-shadow: 0 0 10px #444;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
+<?php
+$id = 1;
+?>
 <script>
     var modalWindow = {
         _block: null,
@@ -165,7 +146,7 @@
         </div>
     </div>
     <div class="v"><?php
-   include "menu.html";
+   include "menu.php";
    ?>
     </div>
     <div>

@@ -13,17 +13,18 @@ session_start();
 
 if ($_SESSION['login']=="")
 {
-    echo "Чтобы оставить комментарий, необходимо зарегистрироваться&emsp;<a href=\"reg.html\" target=\"CONTENT\">Регистрация</a><a href=\"reg.html\" target=\"CONTENT\">Назад</a></center>";
+    echo "Чтобы оставить комментарий, необходимо зарегистрироваться&emsp;<a href=\"index.php\" target=\"CONTENT\">Регистрация</a><a href=\"1.php\" target=\"CONTENT\">Назад</a></center>";
 }
 else
 {
-    $login = $_SESSION['login'];
-    $idpost = 2;
+    $person = $_SESSION['login'];
+    $idpost =$_SESSION['idpost'];
+    $type =$_SESSION['type'];
 }
 // подключаемся к базе
 include ('bd.php');
 
-    $query ="INSERT INTO comments (idpost,user,comment) VALUES('$idpost','$user','$comment')";
+    $query ="INSERT INTO comments (idpost, type, person,comment) VALUES('$idpost','$type','$person','$comment')";
     $result2 = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
 
 mysqli_close($link);
@@ -31,10 +32,10 @@ mysqli_close($link);
 // Проверяем, есть ли ошибки
 if ($result2=='TRUE')
 {
-    echo "Ваш комментарий отправлен<a href='index.php' target=\"CONTENT\">Главная страница</a>";
+    echo "Ваш комментарий отправлен<a href=\"1.php\" target=\"CONTENT\">НАЗАД</a>";
 }
 else {
-    echo "<p><a href=\"index.php\" target=\"CONTENT\">НАЗАД</a></p>";
+    echo "<p><a href=\"1.php\" target=\"CONTENT\">НАЗАД</a></p>";
     mysqli_close($link);
     exit ("Ошибка! Вы не оставиликомментрарий");
 }
