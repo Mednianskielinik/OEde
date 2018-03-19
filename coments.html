@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style/all.css">
+        <link rel="stylesheet" type="text/css" href="style/all.css">
+        <link rel="stylesheet" type="text/css" href="style/menu.css">
+
 </head>
 <body>
+
         <form action="comments.php" method="post">
                 <label>Ваш комментарий:<br></label>
                 <input name="comment" type="text" size="50" maxlength="500">
@@ -36,16 +39,16 @@
             for ($i = 0 ; $i < $rows ; ++$i)
             {
                 $row = mysqli_fetch_row($result);
-                        echo "<hr>";
+                echo "<hr>";
                 echo "<p>";
                 echo "<strong>";
                 echo "Пользователь ";
                 echo $row[0];
                 echo "</strong>";
-        echo "</p>";
-        echo "<br>";
-        echo $row[1];
-        echo "<br>";
+                echo "</p>";
+                echo "<br>";
+               echo $row[1];
+               echo "<br>";
         }
         }
 

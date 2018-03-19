@@ -14,10 +14,15 @@ else
 ?>
 <?php
 $master ="Porridges";
-$menu_second="Home_porridges";
+if (!empty($_GET['id']))
+{
+    $menu_second = $_GET['id'];
+}
 
-if (session_id()=='');
-session_start();
+if (session_id()=='')
+{
+    session_start();
+}
 ?>
 
 <?php

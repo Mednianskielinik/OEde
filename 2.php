@@ -1,8 +1,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Dessert</title>
-    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <title>Soups</title>
+    <link rel="stylesheet" type="text/css" href="../php/style/main.css">
 </head>
 <body>
 <?php
@@ -10,14 +10,18 @@ if (isset($_SESSION['login']))
 {}
 else
 {$_SESSION['login']="";}
-
 ?>
 <?php
 $master ="Dessert";
-$menu_second="Home_dessert";
+if (!empty($_GET['id']))
+{
+    $menu_second = $_GET['id'];
+}
 
-if (session_id()=='');
-session_start();
+if (session_id()=='')
+{
+    session_start();
+}
 ?>
 
 <?php
@@ -26,21 +30,59 @@ include_once("template_header.html");
 
 <div class="flex-container">
     <div class="flex-item">
-      <?php
-      include("menu_second.html");
-      ?>
+        <?php
+        include("menu_second.php");
+        ?>
     </div>
     <div class="flex-item">
-      <?php
-      include_once("Dessert_home.php");
-      ?>
+        <?php
+        $host = "localhost"; // адрес сервера
+        $database = "oede"; // имя базы данных
+        $user = "root"; // имя пользователя
+        $password = ""; // пароль
+        $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
+
+        // изменение набора символов на cp1251
+        if (!mysqli_set_charset($link, "utf8")) {
+            echo "Ошибка при загрузке набора символов UTF-8";
+            mysqli_error($link);
+            exit();
+        }
+        ?>
+        <?php
+        $query ="SELECT ingrid, recipi FROM dessert WHERE iddessert='$menu_second'";
+        $_SESSION['idpost'] = $menu_second;
+        $_SESSION['type'] = $master;
+        $_SESSION['para'] = "2.php";
+        $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+        if($result)
+        {
+            $rows = mysqli_num_rows($result); // количество полученных строк
+            for ($i = 0 ; $i < $rows ; ++$i)
+            {
+                $row = mysqli_fetch_row($result);
+                echo "<p>";
+                echo "<strong>";
+                echo "Для приготовления вам понадобятся: ";
+                echo $row[0];
+                echo "</strong>";
+                echo "</p>";
+                echo "<br>";
+                echo $row[1];
+            }
+        }
+
+        ?>
+        <div id="coment">
+            <?php
+            include ("coments.html")
+            ?>
+        </div>
     </div>
 </div>
+
 <?php
 include_once("template_footer.html");
 ?>
-
-</body>
-
 </body>
 </html>

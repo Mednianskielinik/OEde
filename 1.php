@@ -13,10 +13,19 @@ else
 ?>
 <?php
 $master ="Soups";
-$menu_second = $_GET['id'];
-if (session_id()=='');
+
+if (!empty($_GET['id']))
+{
+    $menu_second = $_GET['id'];
+}
+
+if (session_id()=='')
+{
 session_start();
+}
 ?>
+
+
 
 <?php
 include_once("template_header.html");

@@ -18,8 +18,8 @@ if ($_SESSION['login']=="")
 else
 {
     $person = $_SESSION['login'];
-    $idpost =$_SESSION['idpost'];
-    $type =$_SESSION['type'];
+    $idpost = $_SESSION['idpost'];
+    $type = $_SESSION['type'];
 }
 // подключаемся к базе
 include ('bd.php');
@@ -32,7 +32,7 @@ mysqli_close($link);
 // Проверяем, есть ли ошибки
 if ($result2=='TRUE')
 {
-    echo "Ваш комментарий отправлен<a href=\"1.php?id=$idpost\" target=\"CONTENT\">НАЗАД</a>";
+    include ('check.php');
 }
 else {
     echo "<p><a href=\"1.php\" target=\"CONTENT\">НАЗАД</a></p>";
