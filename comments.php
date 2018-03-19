@@ -32,7 +32,7 @@ mysqli_close($link);
 // Проверяем, есть ли ошибки
 if ($result2=='TRUE')
 {
-    echo "Ваш комментарий отправлен<a href=\"1.php\" target=\"CONTENT\">НАЗАД</a>";
+    echo "Ваш комментарий отправлен<a href=\"1.php?id=$idpost\" target=\"CONTENT\">НАЗАД</a>";
 }
 else {
     echo "<p><a href=\"1.php\" target=\"CONTENT\">НАЗАД</a></p>";

@@ -13,7 +13,7 @@ else
 ?>
 <?php
 $master ="Soups";
-$menu_second = ++$_GET['id'];
+$menu_second = $_GET['id'];
 if (session_id()=='');
 session_start();
 ?>
