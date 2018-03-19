@@ -37,7 +37,7 @@ if ($result2=='TRUE')
 else {
     echo "<p><a href=\"1.php\" target=\"CONTENT\">НАЗАД</a></p>";
     mysqli_close($link);
-    exit ("Ошибка! Вы не оставиликомментрарий");
+    exit ("Ошибка! Вы не оставили комментрарий");
 }
 
 ?>

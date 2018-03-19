@@ -1,8 +1,8 @@
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
-    <title>Porridges</title>
-    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <meta charset="UTF-8">
+    <title>Soups</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css"><!--First comment of Venera-->
 </head>
 <body>
 <?php

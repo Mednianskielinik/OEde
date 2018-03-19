@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Soups</title>
     <link rel="stylesheet" type="text/css" href="../php/style/main.css">
 </head>
@@ -37,8 +37,8 @@ include_once("template_header.html");
         $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
 
         // изменение набора символов на cp1251
-        if (!mysqli_set_charset($link, "cp1251")) {
-            echo "Ошибка при загрузке набора символов cp1251";
+        if (!mysqli_set_charset($link, "utf8")) {
+            echo "Ошибка при загрузке набора символов UTF-8";
             mysqli_error($link);
             exit();
         }

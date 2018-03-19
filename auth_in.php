@@ -1,3 +1,10 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Soups</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css"><!--First comment of Venera-->
+</head>
+<body>
 <?php
 if (session_id()=='');
 session_start();
@@ -53,3 +60,5 @@ else {
     }
 }
 ?>
+</body>
+</html>
