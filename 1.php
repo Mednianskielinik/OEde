@@ -75,6 +75,7 @@ include_once("template_header.html");
         }
 
         ?>
+
         <div id="coment">
         <?php
         include ("coments.html")

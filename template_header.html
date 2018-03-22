@@ -132,11 +132,11 @@
             if (session_id()=='');
             if ($_SESSION['login']=="")
             {
-            echo "<center><div onclick='modalWindow.show(500,1)'>Войти</div>&emsp;<div onclick='modalWindow.show(500,2)'>Регистрация</div></center>";
+            echo "<center><div style='cursor: pointer; color: white'; onclick='modalWindow.show(500,1)' >Войти</div>&emsp;<div  style='cursor: pointer; color: white'; onclick='modalWindow.show(500,2)' >Регистрация</div></center>";
             }
             else
             {
-            echo "<center><a href='auth_out.php' target=\"REG-AUTH\">Выйти</a>&emsp;<div onclick='modalWindow.show(500,2)'>Регистрация</div></center>";
+            echo "<center><a style='color: white'; href='auth_out.php' target=\"REG-AUTH\">Выйти</a>&emsp;<div   style='cursor: pointer; color: white'; onclick='modalWindow.show(500,2)' >Регистрация</div></center>";
             }
             ?>
 

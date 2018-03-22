@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(255, 240, 175, 0.55);
+    background-image: url("bg.png");
 }
 a{
     text-decoration: none;
@@ -24,6 +24,7 @@ a{
 .user
 {
     width:15%;
+    color: white;
 }
 
 #blockscreen, #modalwindow {

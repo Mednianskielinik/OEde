@@ -1,8 +1,9 @@
 <?php
+
 $master = $_SESSION['type'];
 $menu_second = $_SESSION['idpost'];
 
-if ($master == "home")
+if ($master == "home") 
 {
     include ("index.php");
 }

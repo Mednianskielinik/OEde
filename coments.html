@@ -7,51 +7,75 @@
 
 </head>
 <body>
-
-        <form action="comments.php" method="post">
-                <label>Ваш комментарий:<br></label>
-                <input name="comment" type="text" size="50" maxlength="500">
-                <input type="submit" name="submit" value="Прокомментировать">
-        </form>
-
-        <?php
-        $host = "localhost"; // адрес сервера
-        $database = "oede"; // имя базы данных
-        $user = "root"; // имя пользователя
-        $password = ""; // пароль
-        $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
-
-
-        if (!mysqli_set_charset($link, "utf8")) {
-            echo "Ошибка при загрузке набора символов cp1251";
-            mysqli_error($link);
-            exit();
-        }
-        ?>
-        <?php
-            $idpost =$_SESSION['idpost'];
-            $type =$_SESSION['type'];
-        $query ="SELECT person,comment FROM comments WHERE type='$type' AND idpost='$idpost'";
-        $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
-        if($result)
+<script Language="JavaScript">
+    function XmlHttp()
+    {
+        var xmlhttp;
+        try{xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");}
+        catch(e)
         {
-            $rows = mysqli_num_rows($result); // количество полученных строк
-            for ($i = 0 ; $i < $rows ; ++$i)
-            {
-                $row = mysqli_fetch_row($result);
-                echo "<hr>";
-                echo "<p>";
-                echo "<strong>";
-                echo "Пользователь ";
-                echo $row[0];
-                echo "</strong>";
-                echo "</p>";
-                echo "<br>";
-               echo $row[1];
-               echo "<br>";
+            try {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
+            catch (E) {xmlhttp = false;}
         }
+        if (!xmlhttp && typeof XMLHttpRequest!='undefined')
+        {
+            xmlhttp = new XMLHttpRequest();
+        }
+        return xmlhttp;
+    }
+
+    function ajax(param)
+    {
+        if (window.XMLHttpRequest) req = new XmlHttp();
+        method=(!param.method ? "POST" : param.method.toUpperCase());
+
+        if(method=="GET")
+        {
+            send=null;
+            param.url=param.url+"&ajax=true";
+        }
+        else
+        {
+            send="";
+            for (var i in param.data) send+= 'comment'+"="+param.data[i]+"&";
+            //send=send+"ajax=true";
         }
 
-        ?>
+        req.open(method, param.url, true);
+        //if(param.statbox)document.getElementById(param.statbox).innerHTML += '<img src="images/wait.gif">';
+        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        req.send(send);
+        req.onreadystatechange = function()
+        {
+            if (req.readyState == 4 && req.status == 200) //если ответ положительный
+            {
+                if(param.success)param.success(req.responseText);
+            }
+        }
+    }
+</script>
+        <div><form action="comments.php">
+            <p><b>Поле ввода 1</b></p>
+            <p><textarea id="area_1" name="area_1" style="height:50px; width:500px;">Введите свой текст</textarea></p>
+            <input type='button' value='TEST AJAX' onclick='
+                               ajax({url:"comments.php",
+                               statbox:"status",
+                               method:"POST",
+                               data:{
+                                   comment:document.getElementById("area_1").value
+                                    },
+                                   success:function(data){
+                                   document.getElementById("comment_space").innerHTML+=data;
+                               }})'>
+        </form>
+            <div id="comment_space" style="height: 250px; overflow: auto">
+                <?php
+                 include ('vivod.php');
+                  ?>
+            </div>
+        </div>
+
+
+
 </body>
 </html>

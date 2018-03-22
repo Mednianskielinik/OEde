@@ -5,7 +5,9 @@
             align-self: end;
             text-align: center;
             background-color: rgba(51, 50, 50, 0.09);
+            overflow: auto;
         }
+
         .flex-container {
             width: 96%;
             color: rgba(125, 125, 125, 0.75);
@@ -33,7 +35,7 @@
 
         .flex-item:nth-child(1) {
             width: 20%;
-            background-color: rgba(12, 12, 12, 0.82);
+            background-color: rgba(51, 50, 50, 0.09);
             color: rgba(255, 240, 175, 0.75);
             box-shadow: 0 0 10px #757575;
             -webkit-order: 0;
@@ -50,7 +52,7 @@
         .flex-item:nth-child(2) {
             width: 79%;
             height: 100%;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.5);
             color: rgba(12, 12, 12, 0.82);
             box-shadow: 0 0 10px #757575;
             -webkit-order: 0;
