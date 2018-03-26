@@ -2,64 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style/all.css">
-        <link rel="stylesheet" type="text/css" href="style/menu.css">
+    <link rel="stylesheet" type="text/css" href="style/all.css">
+    <link rel="stylesheet" type="text/css" href="style/menu.css">
 
 </head>
 <body>
 <script Language="JavaScript">
+    //создаём объект XMLHttpRequest
     function XmlHttp()
     {
         var xmlhttp;
-        try{xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");}
-        catch(e)
-        {
-            try {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
-            catch (E) {xmlhttp = false;}
-        }
         if (!xmlhttp && typeof XMLHttpRequest!='undefined')
         {
             xmlhttp = new XMLHttpRequest();
         }
         return xmlhttp;
     }
-
+    //наша функция для формирования и отправки запросов
     function ajax(param)
     {
+        //провряем,есть ли экземпляр xmlhttprequest
         if (window.XMLHttpRequest) req = new XmlHttp();
+        //смотрим,какое значение у переменной парам и задаём в зависимости от этого значение для method
         method=(!param.method ? "POST" : param.method.toUpperCase());
-
+        //если у нас GET-запрос,то переменная send будет пустой(мы не передаем данных в GET-запрос)
         if(method=="GET")
         {
             send=null;
+            //ну и дописываем в url что это ajax
             param.url=param.url+"&ajax=true";
         }
+        //если же это POST-запрос,то в переменную send добавляем наш комментарий
         else
         {
             send="";
             for (var i in param.data) send+= 'comment'+"="+param.data[i]+"&";
             //send=send+"ajax=true";
         }
-
+        //вызываем метод open(открывает соединение) method-тип запроса,param.url- адрес запроса,и true-для асинхронности
         req.open(method, param.url, true);
-        //if(param.statbox)document.getElementById(param.statbox).innerHTML += '<img src="images/wait.gif">';
+        //устанавливаем заголовки для запроса
         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //посылаем наши данные
         req.send(send);
+        //Когда серверу посылается запрос, мы хотим выполнить некоторые действия на основе ответа
+        //Событиее onreadystatechange происходит каждый раз, когда свойство readyState (состояние готовности) изменяется
         req.onreadystatechange = function()
         {
             if (req.readyState == 4 && req.status == 200) //если ответ положительный
             {
+                //то вызываем функцию success c параметрами (те данные,что прислал сервер)
                 if(param.success)param.success(req.responseText);
             }
         }
     }
 </script>
-        <div><form action="comments.php">
-            <p><b>Поле ввода 1</b></p>
-            <p><textarea id="area_1" name="area_1" style="height:50px; width:500px;">Введите свой текст</textarea></p>
-            <input type='button' value='TEST AJAX' onclick='
+<div><form action="comments.php">
+    <p><textarea placeholder="Ваш комментарий" id="area_1" name="area_1" style="height:50px; width:920px;"></textarea></p>
+    <input type='button' class="knop" style="margin-left: 20px;"  value='Оставить комментарий' onclick='
                                ajax({url:"comments.php",
-                               statbox:"status",
                                method:"POST",
                                data:{
                                    comment:document.getElementById("area_1").value
@@ -67,13 +68,13 @@
                                    success:function(data){
                                    document.getElementById("comment_space").innerHTML+=data;
                                }})'>
-        </form>
-            <div id="comment_space" style="height: 250px; overflow: auto">
-                <?php
-                 include ('vivod.php');
-                  ?>
-            </div>
-        </div>
+</form>
+    <div id="comment_space" style="height: 610px; overflow: auto">
+        <?php
+        include ('comment_out.php');
+        ?>
+    </div>
+</div>
 
 
 

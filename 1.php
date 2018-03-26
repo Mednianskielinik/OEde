@@ -38,6 +38,7 @@ include_once("template_header.html");
         ?>
     </div>
     <div class="flex-item">
+        <div style="height: 700px; margin-left:4%; margin-right:5%; overflow: auto">
         <?php
         $host = "localhost"; // адрес сервера
         $database = "oede"; // имя базы данных
@@ -53,7 +54,7 @@ include_once("template_header.html");
         }
         ?>
         <?php
-        $query ="SELECT ingrid, recipi FROM soups WHERE idsoup='$menu_second'";
+        $query ="SELECT ingrid, recipi,image FROM soups WHERE idsoup='$menu_second'";
         $_SESSION['idpost'] = $menu_second;
         $_SESSION['type'] = $master;
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
@@ -71,11 +72,14 @@ include_once("template_header.html");
                 echo "</p>";
                 echo "<br>";
                 echo $row[1];
+                echo "<br>";
+                echo "<hr>";
+                echo "<img class='image' src='{$row[2]}' />";
             }
         }
 
         ?>
-
+        </div>
         <div id="coment">
         <?php
         include ("coments.html")

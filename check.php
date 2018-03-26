@@ -1,4 +1,8 @@
 <?php
+if (session_id()=='')
+{
+    session_start();
+}
 
 $master = $_SESSION['type'];
 $menu_second = $_SESSION['idpost'];

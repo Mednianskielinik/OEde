@@ -52,7 +52,7 @@
                 "    </p>\n" +
                 "    <!--**** В поле для паролей (name=\"password\" type=\"password\") пользователь вводит свой пароль ***** -->\n" +
                 "    <p>\n" +
-                "        <input type=\"submit\" name=\"submit\" value=\"Войти\">\n" +
+                "        <input type=\"submit\" class=\"knop\" name=\"submit\" value=\"Войти\">\n" +
                 "    <p>\n" +
                 "        <div onclick='modalWindow.close()'>Отмена</div>\n" +
                 "        <!--**** Кнопочка (type=\"submit\") отправляет данные на страничку auth_in.php ***** -->\n" +
@@ -86,7 +86,7 @@
                 "\n" +
                 "\n" +
                 "<p>\n" +
-                "    <input type=\"submit\" name=\"submit\" value=\"Зарегистрироваться\">\n" +
+                "    <input type=\"submit\" class=\"knop\" name=\"submit\" value=\"Зарегистрироваться\">\n" +
                 "    <p>\n" +
                 "        <div onclick='modalWindow.close()'>Отмена</div>\n" +
                 "</p></form>\n" +
@@ -120,9 +120,14 @@
 
 </script>
 <div class="h">
-    <div class="flex-container">
-        <div class="user">
-
+    <div class="flex-container2">
+        <div class="box">
+            <div class="container-4">
+                <form name="search" method="post" action="search.php">
+                <input type="search" name="query" id="search" placeholder="Поиск..." />
+                <button class="icon" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
         </div>
         <div>
             <img src = "logo.jpg" width="100" height="80">
@@ -132,11 +137,11 @@
             if (session_id()=='');
             if ($_SESSION['login']=="")
             {
-            echo "<center><div style='cursor: pointer; color: white'; onclick='modalWindow.show(500,1)' >Войти</div>&emsp;<div  style='cursor: pointer; color: white'; onclick='modalWindow.show(500,2)' >Регистрация</div></center>";
+            echo "<center><div style='cursor: pointer; color: rgba(255,255,255,0.71)' ; onclick='modalWindow.show(500,1)' >Войти</div>&emsp;<div style='cursor: pointer; color: rgba(255,255,255,0.7)' ; onclick='modalWindow.show(500,2)' >Регистрация</div></center>";
             }
             else
             {
-            echo "<center><a style='color: white'; href='auth_out.php' target=\"REG-AUTH\">Выйти</a>&emsp;<div   style='cursor: pointer; color: white'; onclick='modalWindow.show(500,2)' >Регистрация</div></center>";
+            echo "<center><a style='color: rgba(255,255,255,0.71)' ; href='auth_out.php' target=\"REG-AUTH\">Выйти</a>&emsp;<div style='cursor: pointer; color: rgba(255,255,255,0.71)' ; onclick='modalWindow.show(500,2)' >Регистрация</div></center>";
             }
             ?>
 

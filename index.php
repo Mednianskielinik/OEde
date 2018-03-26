@@ -20,7 +20,8 @@ if (session_id()=='')
 {
     session_start();
 }
-
+$_SESSION['idpost'] = $menu_second;
+$_SESSION['type'] = $master;
 ?>
 <?php
 include_once("template_header.html");

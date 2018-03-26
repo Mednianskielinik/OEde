@@ -1,15 +1,18 @@
         #coment {
-            width: 100%;
-            height: auto;
-            margin-top: 5%;
+            width: 93%;
+            height: 600px;
+            margin-bottom: 0;
+            margin-left: 3%;
+            margin-top: 10%;
             align-self: end;
-            text-align: center;
+            text-align: left;
             background-color: rgba(51, 50, 50, 0.09);
             overflow: auto;
         }
 
         .flex-container {
             width: 96%;
+            height: 1500px;
             color: rgba(125, 125, 125, 0.75);
             margin-top: 25px;
             margin-left: 2%;
@@ -64,4 +67,28 @@
             flex: 0 1 auto;
             -webkit-align-self: auto;
             -ms-flex-item-align: auto;
+        }
+        .flex-container2 {
+            width: 96%;
+            color: rgba(125, 125, 125, 0.75);
+            margin-top: 25px;
+            margin-left: 2%;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-align-content: flex-start;
+            -ms-flex-line-pack: start;
+            align-content: flex-start;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: start;
+            align-items: flex-start;
         }

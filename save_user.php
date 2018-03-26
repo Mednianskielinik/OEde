@@ -7,7 +7,7 @@ if (isset($_POST['e_mail'])) { $e_mail = $_POST['e_mail']; if ($e_mail == '') { 
 
 if (empty($login) or empty($password)) //если пользователь не ввел логин или пароль, то выдаем ошибку и останавливаем скрипт
 {
-    echo "<p><a href=\"reg.html\" target=\"CONTENT\">НАЗАД</a></p>";
+    echo "<p><a href=\"check.php\" target=\"CONTENT\">НАЗАД</a></p>";
     mysqli_close($link);
     exit ("Вы ввели не всю информацию, вернитесь назад и заполните все поля!");
 }
@@ -31,7 +31,7 @@ $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($lin
 $row = mysqli_fetch_row($result);
 if (!empty($row[0]))
 {
-    echo "<p><a href=\"index.php\" target=\"CONTENT\">НАЗАД</a></p>";
+    echo "<p><a href=\"check.php\" target=\"CONTENT\">НАЗАД</a></p>";
     mysqli_close($link);
     exit ("Извините, введённый вами логин уже зарегистрирован. Введите другой логин.");
 }
@@ -49,10 +49,10 @@ mysqli_close($link);
 // Проверяем, есть ли ошибки
 if ($result2=='TRUE')
 {
-    echo "Вы успешно зарегистрированы! Теперь вы можете зайти на сайт. <a href='index.php' target=\"CONTENT\">Главная страница</a>";
+    include ('check.php');
 }
 else {
-    echo "<p><a href=\"index.php\" target=\"CONTENT\">НАЗАД</a></p>";
+    echo "<p><a href=\"check.php\" target=\"CONTENT\">НАЗАД</a></p>";
     mysqli_close($link);
     exit ("Ошибка! Вы не зарегистрированы.");
 }

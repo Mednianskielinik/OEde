@@ -50,10 +50,9 @@ include_once("template_header.html");
         }
         ?>
         <?php
-        $query ="SELECT ingrid, recipi FROM dessert WHERE iddessert='$menu_second'";
+        $query ="SELECT ingrid, recipi, image FROM soups WHERE idsoup='$menu_second'";
         $_SESSION['idpost'] = $menu_second;
         $_SESSION['type'] = $master;
-        $_SESSION['para'] = "2.php";
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
         if($result)
         {
@@ -69,6 +68,9 @@ include_once("template_header.html");
                 echo "</p>";
                 echo "<br>";
                 echo $row[1];
+                echo "<br>";
+                echo "<hr>";
+                echo "<img class='image' src='{$row[2]}' />";
             }
         }
 
