@@ -29,7 +29,7 @@ include ('bd.php');
 mysqli_close($link);
 while(list ($key, $val) = each ($_POST))
 {
-    echo "<hr>";
+
     echo "<p>";
     echo "<strong>";
     echo "Пользователь ";
@@ -38,6 +38,6 @@ while(list ($key, $val) = each ($_POST))
     echo "</p>";
     echo "<br>";
     echo $comment;
-    echo "<br>";
+    echo "<hr>";
 }
 ?>

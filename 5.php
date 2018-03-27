@@ -12,7 +12,7 @@ else
 {$_SESSION['login']="";}
 ?>
 <?php
-$master ="Porridges";
+$master ="Salad";
 
 if (!empty($_GET['id']))
 {

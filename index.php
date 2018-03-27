@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Soups</title>
+    <title>ОЕде</title>
     <link rel="stylesheet" type="text/css" href="style/main.css"><!--First comment of Venera-->
 </head>
 <body>
@@ -27,7 +27,7 @@ $_SESSION['type'] = $master;
 include_once("template_header.html");
 ?>
 
-<div class="flex-container">
+<div class="flex-container2">
     <div>
         <?php
         include("text-home.html");

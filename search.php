@@ -22,7 +22,11 @@ if (session_id()=='')
 ?>
 <?php
 include_once("template_header.html");
+echo "<br>";
+echo "<br>";
+echo "<br>";
 ?>
+
 <div id="coment">
 <?php
 $host = "localhost"; // адрес сервера

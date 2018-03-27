@@ -84,15 +84,12 @@ a{
     color: #7d5439;
 }
 
-hr
+
+.image
 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    color: rgb(168, 28, 27);
-    height: 2px;
-}
-.image{
-    margin-left: 20%;
+    margin-left: 170px;
+    width: 600px;
+    height: auto;
 }
 .h{
              width: 96%;

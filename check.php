@@ -27,4 +27,13 @@ elseif ($master == "Porridges")
     include ('3.php');
 }
 
+elseif ($master == "Secondbl")
+{
+    include ('4.php');
+}
+
+elseif ($master == "Salad")
+{
+    include ('5.php');
+}
 ?>

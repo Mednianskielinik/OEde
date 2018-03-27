@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Soups</title>
+    <title>ОЕде</title>
     <link rel="stylesheet" type="text/css" href="../php/style/main.css">
 </head>
 <body>
@@ -35,6 +35,7 @@ include_once("template_header.html");
         ?>
     </div>
     <div class="flex-item">
+        <div style="height: 750px; margin-left:4%; margin-right:5%; overflow: auto">
         <?php
         $host = "localhost"; // адрес сервера
         $database = "oede"; // имя базы данных
@@ -71,10 +72,12 @@ include_once("template_header.html");
                 echo "<br>";
                 echo "<hr>";
                 echo "<img class='image' src='{$row[2]}' />";
+                echo "<hr>";
             }
         }
 
         ?>
+        </div>
         <div id="coment">
             <?php
             include ("coments.html")
